@@ -10,11 +10,26 @@
   <div class="container">
     <h1 class="title">AIML Subjects</h1>
     <div class="subject-box">
-      <button class="glass-btn subject-btn" onclick="selectSubject('Artificial Intelligence')">Artificial Intelligence</button>
-      <button class="glass-btn subject-btn" onclick="selectSubject('Machine Learning')">Machine Learning</button>
-      <button class="glass-btn subject-btn" onclick="selectSubject('Python Programming')">Python Programming</button>
-      <button class="glass-btn subject-btn" onclick="selectSubject('Data Structures')">Data Structures</button>
-      <button class="glass-btn subject-btn" onclick="selectSubject('Database Management')">Database Management</button>
+      <button class="glass-btn subject-btn" onclick="selectSubject('a')">a</button>
+      <button class="glass-btn subject-btn" onclick="selectSubject('b')">b</button>
+      <button class="glass-btn subject-btn" onclick="selectSubject('c')">c</button>
+      <button class="glass-btn subject-btn" onclick="selectSubject('d')">d</button>
+    </div>
+
+    <div id="options-section" style="display: none;">
+      <h2 class="title">Select Option</h2>
+      <p class="subtitle">Choose what you want for <span id="subjectName"></span></p>
+      <div class="button-grid">
+        <button class="glass-btn" onclick="selectOption('notes')">Notes</button>
+        <button class="glass-btn" onclick="selectOption('record')">Record</button>
+        <button class="glass-btn" onclick="selectOption('textbooks')">Textbooks</button>
+        <button class="glass-btn" onclick="selectOption('pyqs')">PYQs</button>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button class="back-btn" onclick="window.location.href='../branch.html'">Back</button>
+      <button class="queries-btn" onclick="window.open('https://formsubmit.co/el/vacame', '_blank')">Queries</button>
     </div>
   </div>
 
