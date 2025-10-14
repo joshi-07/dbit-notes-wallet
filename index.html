@@ -1,152 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>DBit Notes Wallet — Simple Notes</title>
-		<style>
-			:root{--bg:#0f1724;--card:#0b1220;--accent:#7c3aed;--muted:#9ca3af;--text:#e6eef8}
-			*{box-sizing:border-box}
-			html,body{height:100%}
-			body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#071025 0%,#071827 60%);color:var(--text);display:flex;align-items:center;justify-content:center;padding:24px}
-			.wrap{width:100%;max-width:760px}
-			header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-			.logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
-			h1{font-size:20px;margin:0}
-			p.lead{margin:4px 0 0;color:var(--muted);font-size:13px}
-			.card{background:rgba(255,255,255,0.03);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.6)}
-			.controls{display:flex;gap:8px;margin-bottom:12px}
-			input[type=text]{flex:1;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);outline:none}
-			button{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
-			button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:600}
-			ul.notes{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-			li.note{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:10px;border-radius:8px;min-height:64px;display:flex;flex-direction:column;gap:8px}
-			.note .text{flex:1;color:var(--text);word-break:break-word}
-			.meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
-			.empty{color:var(--muted);text-align:center;padding:18px}
-			footer {margin-top:12px;text-align:center;color:var(--muted);font-size:12px}
-			@media (max-width:520px){.controls{flex-direction:column}button{width:100%}}
-		</style>
-	</head>
-	<body>
-		<div class="wrap">
-			<header>
-				<div class="logo">DB</div>
-				<div>
-					<h1>DBit Notes Wallet</h1>
-					<p class="lead">Simple, local-only notes stored in your browser (localStorage).</p>
-				</div>
-			</header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Year | College Notes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="library-bg">
+  <div class="container">
+    <h1 class="title">Welcome to College Notes</h1>
+    <p class="subtitle">Select your Year of Study</p>
 
-			<div class="card">
-				<div class="controls">
-					<input id="noteInput" type="text" placeholder="Write a quick note (press Enter or click Save)..." aria-label="note input" />
-					<button id="saveBtn">Save</button>
-					<button id="clearBtn" class="ghost">Clear All</button>
-				</div>
+    <div class="button-grid">
+      <button class="glass-btn" onclick="selectYear(1)">1st Year</button>
+      <button class="glass-btn" onclick="selectYear(2)">2nd Year</button>
+      <button class="glass-btn" onclick="selectYear(3)">3rd Year</button>
+      <button class="glass-btn" onclick="selectYear(4)">4th Year</button>
+    </div>
+  </div>
 
-				<div id="notesContainer">
-					<p class="empty">No notes yet — add one above.</p>
-				</div>
-			</div>
-
-			<footer>
-				Local-only. No servers. Notes persist until you clear them or clear browser storage.
-			</footer>
-		</div>
-
-		<script>
-			// Tiny notes app that stores an array of notes in localStorage under 'dbit-notes'
-			(function(){
-				const KEY = 'dbit-notes';
-				const input = document.getElementById('noteInput');
-				const saveBtn = document.getElementById('saveBtn');
-				const clearBtn = document.getElementById('clearBtn');
-				const notesContainer = document.getElementById('notesContainer');
-
-				function loadNotes(){
-					try{
-						const raw = localStorage.getItem(KEY);
-						return raw ? JSON.parse(raw) : [];
-					}catch(e){
-						console.error('Failed to load notes', e);
-						return [];
-					}
-				}
-
-				function saveNotes(notes){
-					try{ localStorage.setItem(KEY, JSON.stringify(notes)); }
-					catch(e){ console.error('Failed to save notes', e); }
-				}
-
-				function render(){
-					const notes = loadNotes();
-					if(!notes.length){
-						notesContainer.innerHTML = '<p class="empty">No notes yet — add one above.</p>';
-						return;
-					}
-
-					const ul = document.createElement('ul');
-					ul.className = 'notes';
-
-					notes.slice().reverse().forEach((n, idx) => {
-						const li = document.createElement('li');
-						li.className = 'note';
-						const txt = document.createElement('div');
-						txt.className = 'text';
-						txt.textContent = n.text;
-
-						const meta = document.createElement('div');
-						meta.className = 'meta';
-						const time = document.createElement('div');
-						time.textContent = new Date(n.ts).toLocaleString();
-
-						const actions = document.createElement('div');
-						const del = document.createElement('button');
-						del.textContent = 'Delete';
-						del.className = 'ghost';
-						del.style.padding = '6px 8px';
-						del.style.fontSize = '12px';
-						del.onclick = function(){
-							// Remove by original index from reversed array
-							const realIdx = notes.length - 1 - idx;
-							notes.splice(realIdx,1);
-							saveNotes(notes);
-							render();
-						};
-
-						actions.appendChild(del);
-						meta.appendChild(time);
-						meta.appendChild(actions);
-
-						li.appendChild(txt);
-						li.appendChild(meta);
-						ul.appendChild(li);
-					});
-
-					notesContainer.innerHTML = '';
-					notesContainer.appendChild(ul);
-				}
-
-				function addNote(text){
-					if(!text || !text.trim()) return;
-					const notes = loadNotes();
-					notes.push({text: text.trim(), ts: Date.now()});
-					saveNotes(notes);
-					render();
-				}
-
-				saveBtn.addEventListener('click', ()=>{ addNote(input.value); input.value = ''; input.focus(); });
-				input.addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ addNote(input.value); input.value=''; } });
-				clearBtn.addEventListener('click', ()=>{
-					if(!confirm('Clear all notes? This cannot be undone.')) return;
-					localStorage.removeItem(KEY);
-					render();
-				});
-
-				// initial render
-				render();
-			})();
-		</script>
-	</body>
+  <script src="script.js"></script>
+</body>
 </html>
