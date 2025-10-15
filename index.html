@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Year | College Notes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="library-bg">
+  <div class="container">
+    <h1 class="title">Welcome to College Notes</h1>
+    <p class="subtitle">Select your Year of Study</p>
+
+    <div class="button-grid">
+      <button class="glass-btn" onclick="selectYear(1)">1st Year</button>
+      <button class="glass-btn" onclick="selectYear(2)">2nd Year</button>
+      <button class="glass-btn" onclick="selectYear(3)">3rd Year</button>
+      <button class="glass-btn" onclick="selectYear(4)">4th Year</button>
+    </div>
+
+    <div class="rating-section">
+      <h3>Rate Us</h3>
+      <div class="stars">
+        <span class="star" data-value="1">☆</span>
+        <span class="star" data-value="2">☆</span>
+        <span class="star" data-value="3">☆</span>
+        <span class="star" data-value="4">☆</span>
+        <span class="star" data-value="5">☆</span>
+      </div>
+      <button id="submit-rating" class="glass-btn">Submit Rating</button>
+      <div id="rating-display">
+        <p>Total Ratings: <span id="rating-count">0</span></p>
+        <p>Average Rating: <span id="rating-average">0</span></p>
+      </div>
+    </div>
+
+    <button class="queries-btn" onclick="window.open('https://formsubmit.co/el/vacame', '_blank')">Queries</button>
+  </div>
+
+  <script>
+    // Redirect to index.html if accessing a subject page directly
+    if (window.location.pathname.includes('/subjects/')) {
+      window.location.href = 'index.html';
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
