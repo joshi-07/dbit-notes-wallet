@@ -1,4 +1,0 @@
-- [x] Fix default page opening to year selection when accessing mechanical subjects directly
-- [x] Align back button to left and queries button to right in subjects pages
-- [x] Add back button to options.html and align with queries button
-- [x] Apply alignment fixes to all subjects pages (aiml, aids, ise, cse, ece, civil, mechanical)

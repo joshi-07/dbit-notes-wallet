@@ -22,6 +22,60 @@ function selectOption(option) {
   window.open(driveLink, '_blank');
 }
 
+// Rating functionality
+let selectedRating = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+  const stars = document.querySelectorAll('.star');
+  const submitBtn = document.getElementById('submit-rating');
+
+  stars.forEach(star => {
+    star.addEventListener('click', function() {
+      selectedRating = parseInt(this.getAttribute('data-value'));
+      updateStars(selectedRating);
+    });
+  });
+
+  submitBtn.addEventListener('click', function() {
+    if (selectedRating > 0) {
+      submitRating(selectedRating);
+      selectedRating = 0;
+      updateStars(0);
+    }
+  });
+
+  updateRatingDisplay();
+});
+
+function updateStars(rating) {
+  const stars = document.querySelectorAll('.star');
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.textContent = '★';
+      star.classList.add('selected');
+    } else {
+      star.textContent = '☆';
+      star.classList.remove('selected');
+    }
+  });
+}
+
+function submitRating(rating) {
+  let ratings = JSON.parse(localStorage.getItem('ratings')) || [];
+  ratings.push(rating);
+  localStorage.setItem('ratings', JSON.stringify(ratings));
+  updateRatingDisplay();
+}
+
+function updateRatingDisplay() {
+  const ratings = JSON.parse(localStorage.getItem('ratings')) || [];
+  const count = ratings.length;
+  const average = count > 0 ? (ratings.reduce((sum, r) => sum + r, 0) / count).toFixed(1) : 0;
+
+  document.getElementById('rating-count').textContent = count;
+  document.getElementById('rating-average').textContent = average;
+}
+
 function getDriveLink(year, branch, subject, option) {
   // Placeholder drive links for each year-branch-subject-option combination
   // Add actual drive links here later
