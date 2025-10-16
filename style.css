@@ -120,17 +120,40 @@ body.library-bg::before {
   background: linear-gradient(145deg, #ffd700, #daa520);
 }
 
-.queries-btn {
+.feedback-btn {
   background: linear-gradient(145deg, #cd853f, #a0522d);
   border: 2px solid #654321;
-  border-radius: 8px;
-  padding: 10px 15px;
+  border-radius: 5px;
+  padding: 6px 10px;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+}
+
+.feedback-btn:hover {
+  background: linear-gradient(145deg, #a0522d, #cd853f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.queries-btn {
+  background: linear-gradient(145deg, #cd853f, #a0522d);
+  border: 2px solid #654321;
+  border-radius: 5px;
+  padding: 6px 10px;
+  color: #fff;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
 }
 
 .queries-btn:hover {
@@ -190,6 +213,7 @@ body.library-bg::before {
   cursor: pointer;
   transition: color 0.3s ease;
   color: #ddd;
+  -webkit-text-stroke: 1px black;
 }
 
 .star.selected {
