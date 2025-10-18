@@ -1,7 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@400;700&display=swap');
 
-body.library-bg {
-  background: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+body.library-bg, body.library-bg-year, body.library-bg-branch, body.library-bg-subject, body.library-bg-options {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,7 +28,27 @@ body.library-bg {
   position: relative;
 }
 
-body.library-bg::before {
+body.library-bg {
+  background: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+}
+
+body.library-bg-year {
+  background: url('https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+}
+
+body.library-bg-branch {
+  background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+}
+
+body.library-bg-subject {
+  background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+}
+
+body.library-bg-options {
+  background: url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+}
+
+body.library-bg::before, body.library-bg-year::before, body.library-bg-branch::before, body.library-bg-subject::before, body.library-bg-options::before {
   content: '';
   position: absolute;
   top: 0;
@@ -51,12 +88,14 @@ body.library-bg::before {
   margin-bottom: 15px;
   color: #8b4513;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .subtitle {
   font-size: 1.2rem;
   margin-bottom: 25px;
   color: #654321;
+  animation: fadeIn 1.5s ease-in-out 0.5s both;
 }
 
 .button-grid {
@@ -79,6 +118,7 @@ body.library-bg::before {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+  animation: fadeIn 1.5s ease-in-out 1s both;
 }
 
 .glass-btn::before {
@@ -114,6 +154,7 @@ body.library-bg::before {
   width: 200px;
   background: linear-gradient(145deg, #daa520, #ffd700);
   border: 2px solid #b8860b;
+  animation: fadeIn 1.5s ease-in-out 1.2s both;
 }
 
 .subject-btn:hover {
@@ -133,6 +174,7 @@ body.library-bg::before {
   position: absolute;
   bottom: 5px;
   left: 20px;
+  animation: fadeIn 1.5s ease-in-out 2s both;
 }
 
 .feedback-btn:hover {
@@ -154,6 +196,7 @@ body.library-bg::before {
   position: absolute;
   bottom: 5px;
   right: 20px;
+  animation: fadeIn 1.5s ease-in-out 2.2s both;
 }
 
 .queries-btn:hover {
@@ -179,6 +222,7 @@ body.library-bg::before {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.5s ease-in-out 1.4s both;
 }
 
 .back-btn:hover {
@@ -199,6 +243,7 @@ body.library-bg::before {
 .rating-section h3 {
   color: #8b4513;
   margin-bottom: 15px;
+  animation: fadeIn 1.5s ease-in-out 1.6s both;
 }
 
 .stars {
@@ -214,6 +259,7 @@ body.library-bg::before {
   transition: color 0.3s ease;
   color: #ddd;
   -webkit-text-stroke: 1px black;
+  animation: fadeIn 1.5s ease-in-out 1.8s both;
 }
 
 .star.selected {
