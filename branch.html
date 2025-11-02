@@ -8,7 +8,11 @@
 </head>
 <body class="library-bg-branch">
   <div class="container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">🌙</button>
     <h1 class="title">Select Your Branch</h1>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search branches..." aria-label="Search">
+    </div>
     <div class="button-grid">
       <button class="glass-btn" onclick="goToSubjects('aiml')">AIML</button>
       <button class="glass-btn" onclick="goToSubjects('aids')">AIDS</button>
@@ -19,7 +23,8 @@
       <button class="glass-btn" onclick="goToSubjects('mechanical')">Mechanical</button>
     </div>
 
-    <button class="queries-btn" onclick="window.location.href='index.html'">Back</button>
+    <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+    <a href="https://formsubmit.co/el/vacame" target="_blank" class="queries-btn">Queries</a>
   </div>
 
   <script src="script.js"></script>

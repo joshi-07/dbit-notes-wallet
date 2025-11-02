@@ -8,8 +8,12 @@
 </head>
 <body class="library-bg-options">
   <div class="container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">🌙</button>
     <h1 class="title">Select Option</h1>
     <p class="subtitle">Choose what you want for <span id="subjectName"></span></p>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search options..." aria-label="Search">
+    </div>
 
     <div class="button-grid">
       <button class="glass-btn" onclick="selectOption('notes')">Notes</button>
@@ -20,7 +24,7 @@
 
     <div class="bottom-buttons">
       <button class="back-btn" onclick="window.location.href='branch.html'">Back</button>
-      <button class="queries-btn" onclick="window.open('https://formsubmit.co/el/vacame', '_blank')">Queries</button>
+    <a href="https://formsubmit.co/el/vacame" target="_blank" class="queries-btn">Queries</a>
     </div>
   </div>
 

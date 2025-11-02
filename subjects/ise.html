@@ -8,7 +8,11 @@
 </head>
 <body class="library-bg-subject">
   <div class="container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">🌙</button>
     <h1 class="title">ISE Subjects</h1>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search subjects..." aria-label="Search">
+    </div>
     <div class="subject-box">
       <button class="glass-btn subject-btn" onclick="selectSubject('a')">a</button>
       <button class="glass-btn subject-btn" onclick="selectSubject('b')">b</button>
@@ -29,7 +33,7 @@
 
     <div class="bottom-buttons">
       <button class="back-btn" onclick="window.location.href='../branch.html'">Back</button>
-      <button class="queries-btn" onclick="window.open('https://formsubmit.co/el/vacame', '_blank')">Queries</button>
+    <a href="https://formsubmit.co/el/vacame" target="_blank" class="queries-btn">Queries</a>
     </div>
   </div>
 
